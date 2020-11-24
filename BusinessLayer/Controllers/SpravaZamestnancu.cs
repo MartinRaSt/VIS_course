@@ -72,7 +72,7 @@ namespace BusinessLayer.Controllers
         {
             List<ZamestnanecStruct> lstZam = null;
             string errMsg = string.Empty;
-            if (UzivateleGW.Instance.Load(out lstZam, out errMsg))
+            if (ZamestnanciGW.Instance.Load(out lstZam, out errMsg))
             {
                 if (lstZam != null)
                 {
@@ -114,7 +114,7 @@ namespace BusinessLayer.Controllers
                         zam.Jmeno,zam.Prijmeni,zam.ZamestnanOd, (uint)zam.TypZamestnance));
             }
             
-            if (!UzivateleGW.Instance.Save(lstZam, out errMsg))
+            if (!ZamestnanciGW.Instance.Save(lstZam, out errMsg))
             {
                 //Zalogujeme někam chybu
                 throw new Exception($"Zamestnanci: ZapisDoUloziste \n{errMsg}");
