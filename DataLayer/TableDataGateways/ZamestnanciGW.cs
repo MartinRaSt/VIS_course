@@ -66,11 +66,11 @@ namespace DataLayer.TableDataGateways
 
         #region Veřejné metody
         /// <summary>
-        /// 
+        /// Uložení všech zaměstnanců do uložiště
         /// </summary>
         /// <param name="zamestToSave">Seznam všech zaměstnanců k uložení</param>
         /// <param name="msgErr">Chybové hlášení v případě chyby</param>
-        /// <returns></returns>
+        /// <returns>True: operace se povedla, False: operace se nepovedla</returns>
         public bool Save(List<ZamestnanecStruct> zamestToSave, out string msgErr)
         {
             msgErr = string.Empty;
