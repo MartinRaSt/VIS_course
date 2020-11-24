@@ -1,9 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DataLayer" GeneratedClassName="Settings1">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DataLayer.Properties" GeneratedClassName="DBLayer">
   <Profiles />
   <Settings>
     <Setting Name="ConnString" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=Q:\VSB_Vyuka\VIS_2020\Projekt_cv2\Data\Knihovna.mdf;Integrated Security=True;Connect Timeout=30</Value>
+    </Setting>
+    <Setting Name="ZamestXml" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Q:\VSB_Vyuka\VIS_2020\Projekt_cv2\Data\Zamestnanci.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

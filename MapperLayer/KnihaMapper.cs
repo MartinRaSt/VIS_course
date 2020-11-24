@@ -13,6 +13,39 @@ namespace Mappers
 {
     public class KnihaMapper
     {
+        #region Veřejné proměnné
+
+        public static KnihaMapper Instance
+        {
+            get
+            {
+                lock (m_LockObj)
+                {
+                    return m_Instance ?? (m_Instance = new KnihaMapper());
+                }
+            }
+        }
+
+        #endregion
+
+        #region Privátní proměnné
+
+        private static readonly object m_LockObj = new object();
+        private static KnihaMapper m_Instance;
+
+        #endregion
+
+        #region Privátní metody
+
+        private KnihaMapper()
+        {
+        }
+
+        #endregion
+
+        #region Veřejné metody
+
+        #endregion
     } //class
 
 } //namespace

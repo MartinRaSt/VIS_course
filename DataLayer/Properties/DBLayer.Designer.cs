@@ -32,5 +32,14 @@ namespace DataLayer.Properties {
                 return ((string)(this["ConnString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Q:\\VSB_Vyuka\\VIS_2020\\Projekt_cv2\\Data\\Zamestnanci.xml")]
+        public string ZamestXml {
+            get {
+                return ((string)(this["ZamestXml"]));
+            }
+        }
     }
 }

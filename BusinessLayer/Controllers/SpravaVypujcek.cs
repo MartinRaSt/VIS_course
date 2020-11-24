@@ -72,7 +72,7 @@ namespace BusinessLayer.Controllers
         /// <summary>
         /// Privátní konstruktor, třídu nelze vytvořit jinak, než přes přístup na valstnost Instance
         /// </summary>
-        private SpravaVypujcek():base()
+        private SpravaVypujcek()
         {
             
             m_Vypujcky = new List<Vypujcka>();
