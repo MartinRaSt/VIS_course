@@ -15,10 +15,20 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.BO
 {
+    
     /// <summary>
     /// Třída pro udržování informací o zákaznících/uživatelích IS
     /// </summary>
     public class Uzivatel:Osoba
     {
+        #region Veřejné metody
+        /// <summary>
+        /// Konstruktor třídy
+        /// </summary>
+        public Uzivatel() : base()
+        {
+
+        }
+        #endregion
     }//class
 }//namespace

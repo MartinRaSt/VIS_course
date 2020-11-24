@@ -12,7 +12,17 @@ namespace BusinessLayer.BO
     /// <summary>
     /// Reprezentuje knihu
     /// </summary>
-    public class Kniha
+    public class Kniha: Entita
     {
+        #region Veřejné metody
+        /// <summary>
+        /// Konstruktor třídy
+        /// </summary>
+        public Kniha() : base()
+        {
+
+        }
+        #endregion
+
     }//class
 }//namespace

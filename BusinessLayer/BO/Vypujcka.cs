@@ -18,7 +18,7 @@ namespace BusinessLayer.BO
     /// <summary>
     /// Reprezentuje jednu výpůjčku knih
     /// </summary>
-    public class Vypujcka
+    public class Vypujcka: Entita
     {
         #region Privátní proměnné
         private List<Kniha> m_PujceneKnihy;
@@ -81,7 +81,7 @@ namespace BusinessLayer.BO
         /// </summary>
         /// <param name="vypujcitel"></param>
         /// <param name="obsluha"></param>
-        public Vypujcka(Osoba vypujcitel, Osoba obsluha, DateTime okamzikPujcky)
+        public Vypujcka(Osoba vypujcitel, Osoba obsluha, DateTime okamzikPujcky):base()
         {
             Zakaznik = (Uzivatel)vypujcitel;
             Pujcil = (Zamestnanec)obsluha;

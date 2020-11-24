@@ -18,7 +18,7 @@ namespace BusinessLayer.BO
     /// <summary>
     /// Bázový kontejner se společnými vlastnostmi pro uživatele IS
     /// </summary>
-    public class Osoba
+    public class Osoba: Entita
     {
         #region Privátní proměnné
         private string m_Jmeno;
@@ -44,5 +44,16 @@ namespace BusinessLayer.BO
             set => m_Prijmeni = value;
         }
         #endregion
+
+        #region Veřejné metody
+        /// <summary>
+        /// Konstruktor třídy
+        /// </summary>
+        public Osoba() : base()
+        {
+
+        }
+        #endregion
+
     }//class
 }//namespace

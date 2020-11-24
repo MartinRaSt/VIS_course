@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BO\Entita.cs" />
     <Compile Include="BO\Osoba.cs" />
     <Compile Include="BO\Uzivatel.cs" />
     <Compile Include="BO\Kniha.cs" />
     <Compile Include="BO\Vypujcka.cs" />
     <Compile Include="BO\Zamestnanec.cs" />
+    <Compile Include="Enums\EnTypZamest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\SpravaVypujcek.cs" />
   </ItemGroup>
@@ -56,6 +58,10 @@
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{4b4943ad-e3e8-44d6-ba00-347fb0c7d49e}</Project>
       <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{6bed9666-6f9f-419e-a25e-4799c7dda12c}</Project>
+      <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
