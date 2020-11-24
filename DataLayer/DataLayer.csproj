@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagramDAL.cd" />
     <None Include="Properties\DBLayer.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>DBLayer.Designer.cs</LastGenOutput>

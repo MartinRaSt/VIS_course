@@ -49,6 +49,9 @@
       <HashCode>AAAAAAAAAAAACAAABAAAAAEAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>BO\Zamestnanec.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_TypZamest" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="BusinessLayer.Controllers.SpravaVypujcek" Collapsed="true">
     <Position X="1.75" Y="0.5" Width="1.5" />

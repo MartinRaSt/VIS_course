@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataLayer.TableDataGateways.UzivateleGW">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>TableDataGateways\UzivateleGW.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.DataConnection">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABIABAAAECCIAEAMAAAAAAAAAIQAAAYACAAAA=</HashCode>
+      <FileName>DataConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.TableDataGateways.ZamestnanciStorage">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>TableDataGateways\ZamestnanciGW.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.TableDataGateways.ZamestnanciGW">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAIAAAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>TableDataGateways\ZamestnanciGW.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
