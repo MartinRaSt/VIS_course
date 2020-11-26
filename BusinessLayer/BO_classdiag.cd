@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="BusinessLayer.BO.Kniha" Collapsed="true">
+  <Class Name="BusinessLayer.BO.Kniha">
     <Position X="5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BO\Kniha.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BusinessLayer.BO.Osoba" Collapsed="true">
+  <Class Name="BusinessLayer.BO.Osoba">
     <Position X="6.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAIAAAQABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BO\Osoba.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BusinessLayer.BO.Uzivatel" Collapsed="true">
-    <Position X="6.75" Y="3.25" Width="1.5" />
+  <Class Name="BusinessLayer.BO.Uzivatel">
+    <Position X="6.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAIACAAAACEAAAAAAACAABAAAAAAQAAAA=</HashCode>
       <FileName>BO\Uzivatel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BusinessLayer.BO.Vypujcka" Collapsed="true">
-    <Position X="2" Y="3.25" Width="1.5" />
+    <Position X="1.5" Y="5.5" Width="1.5" />
     <AssociationLine Name="m_Pujcil" Type="BusinessLayer.BO.Zamestnanec" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="2.562" Y="3.941" />
-        <Point X="2.562" Y="4.316" />
-        <Point X="9.5" Y="4.316" />
-        <Point X="9.5" Y="3.941" />
+        <Point X="2.062" Y="6.191" />
+        <Point X="2.062" Y="6.566" />
+        <Point X="9.5" Y="6.566" />
+        <Point X="9.5" Y="5.578" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -43,7 +43,7 @@
       <Field Name="m_PujceneKnihy" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="BusinessLayer.BO.Zamestnanec" Collapsed="true">
+  <Class Name="BusinessLayer.BO.Zamestnanec">
     <Position X="8.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAABAAAAAEAAAAAAAAAAAAAAAAAIAA=</HashCode>
@@ -53,7 +53,7 @@
       <Field Name="m_TypZamest" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="BusinessLayer.Controllers.SpravaVypujcek" Collapsed="true">
+  <Class Name="BusinessLayer.Controllers.SpravaVypujcek">
     <Position X="1.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAIQAAAACAAAAE=</HashCode>
@@ -71,11 +71,18 @@
     </TypeIdentifier>
   </Class>
   <Enum Name="BusinessLayer.Enums.EnTypZamest">
-    <Position X="9.75" Y="0.75" Width="1.5" />
+    <Position X="11.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAEAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Enums\EnTypZamest.cs</FileName>
       <NewMemberFileName>Enums\enTypZamest.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BusinessLayer.Enums.EnHodnoceni">
+    <Position X="11.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Enums\EnHodnoceni.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

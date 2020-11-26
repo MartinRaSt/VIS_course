@@ -62,6 +62,9 @@ namespace BusinessLayer.Controllers
 
         #region Privátní metody
 
+        /// <summary>
+        /// Objekt spravy zamestnancu
+        /// </summary>
         private SpravaZamestnancu()
         {
             m_Zamestnanci  = new List<Zamestnanec>();

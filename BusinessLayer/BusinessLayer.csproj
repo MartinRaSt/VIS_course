@@ -48,6 +48,7 @@
     <Compile Include="BO\Vypujcka.cs" />
     <Compile Include="BO\Zamestnanec.cs" />
     <Compile Include="Controllers\SpravaZamestnancu.cs" />
+    <Compile Include="Enums\EnHodnoceni.cs" />
     <Compile Include="Enums\EnTypZamest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\SpravaVypujcek.cs" />

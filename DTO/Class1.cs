@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
+    /// <summary>
+    /// Zakladni trida
+    /// </summary>
     public class Class1
     {
+
     }
 }

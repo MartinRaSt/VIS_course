@@ -60,6 +60,14 @@ namespace DTO.Structs
         #endregion
 
         #region Veřejné metody
+        /// <summary>
+        /// Zakladni struktura pro ulozeni
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="jmeno"></param>
+        /// <param name="prijmeni"></param>
+        /// <param name="zamestnanOd"></param>
+        /// <param name="typZamest"></param>
         public ZamestnanecStruct(long id, string jmeno, string prijmeni, DateTime zamestnanOd, uint typZamest)
         {
             m_Id = id;
