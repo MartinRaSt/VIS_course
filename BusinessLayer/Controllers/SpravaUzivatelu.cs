@@ -79,12 +79,12 @@ namespace BusinessLayer.Controllers
                     {
                         Uzivatele.Add(new Uzivatel()
                         {
-                            Id = (long)row["Id"],
+                            Id = Convert.ToInt64(row["Id"]),
                             Jmeno = row["Jmeno"].ToString(),
                             Prijmeni = row["Prijmeni"].ToString(),
                             DatumNarozeni = (DateTime)row["DatumNarozeni"],
                             ClenemOd = (DateTime)row["ClenemOd"],
-                            Spolehlivost = (EnHodnoceni)((int)row["Spolehlivost"])
+                            Spolehlivost = (EnHodnoceni)(Convert.ToUInt16(row["Spolehlivost"]))
                         });
                     }
                 }
@@ -93,7 +93,7 @@ namespace BusinessLayer.Controllers
             else
             {
                 //Zalogujeme někam chybu
-                throw new Exception($"Uživatelé: Načteni uživatelů z uložiště \n{errMsg}");
+                throw new Exception($"Chyba Uživatelé: Načteni uživatelů z uložiště \n{errMsg}");
             }
         }//NacteniZUloziste
 
@@ -104,18 +104,34 @@ namespace BusinessLayer.Controllers
             //Pomocny seznam pro ukladani
             DataTable dtUzivatele = new DataTable();
 
+            //definice struktury datatable
+            dtUzivatele.Columns.Add("Id", typeof(int));
+            dtUzivatele.Columns.Add("Jmeno", typeof(string));
+            dtUzivatele.Columns.Add("Prijmeni", typeof(string));
+            dtUzivatele.Columns.Add("DatumNarozeni", typeof(DateTime));
+            dtUzivatele.Columns.Add("ClenemOd", typeof(DateTime));
+            dtUzivatele.Columns.Add("Spolehlivost", typeof(UInt32));
+
+            
             //Naplneni uzivatelu do datatable
             foreach (var zam in m_Uzivatele)
             {
-                //lstZam.Add(
-                //    new ZamestnanecStruct(zam.Id == -1 ? maxID++ : zam.Id,
-                //        zam.Jmeno, zam.Prijmeni, zam.ZamestnanOd, (uint)zam.TypZamestnance));
+                DataRow row = dtUzivatele.NewRow();
+                row["Id"] = zam.Id;
+                row["Jmeno"] = zam.Jmeno;
+                row["Prijmeni"] = zam.Prijmeni;
+                row["DatumNarozeni"] = zam.DatumNarozeni;
+                row["ClenemOd"] = zam.ClenemOd;
+                row["Spolehlivost"] = (uint)zam.Spolehlivost;
+                dtUzivatele.Rows.Add(row);
             }
+            //Potvrdime zmeny z tabulce
+            dtUzivatele.AcceptChanges();
 
             if (!UzivateleGW.Instance.SaveAll(dtUzivatele, out errMsg))
             {
                 //Zalogujeme někam chybu
-                throw new Exception($"Uzivatele: ZapisDoUloziste \n{errMsg}");
+                throw new Exception($"Chyba Uživatelé: Zápis do uložiště \n{errMsg}");
             }
             return true;
         }//ZapisDoUloziste
@@ -134,12 +150,82 @@ namespace BusinessLayer.Controllers
         }
 
         /// <summary>
-        /// Vložení nového zaměstnance
+        /// Vložení nového uživatele
         /// </summary>
         /// <param name="uzivatel"> Objekt třídy uzivatel</param>
-        public void AddZamestnanec(Uzivatel uzivatel)
+        public void AddUzivatel(Uzivatel uzivatel)
         {
             m_Uzivatele.Add(uzivatel);
+            var id = uzivatel.Id;
+            string err = string.Empty;
+            //Vlozime do DB
+            if ( UzivateleGW.Instance.InsertOrUpdate(
+                ref id,
+                uzivatel.Jmeno,
+                uzivatel.Prijmeni,
+                uzivatel.DatumNarozeni,
+                uzivatel.ClenemOd,
+                (ushort) uzivatel.Spolehlivost,
+                out err))
+            {
+                //Nastavime spravne ID ktere nam vratila DB
+                uzivatel.Id = id;
+            }
+        }
+
+        /// <summary>
+        /// Změna uživatele 
+        /// </summary>
+        /// <param name="uzivatel"> Objekt třídy uzivatel</param>
+        /// <param name="error">Text chyby pokud nastala</param>
+        /// <returns>True zmena se provedla, False nastala chyba</returns>
+        public bool UpdateUzivatel(Uzivatel uzivatel, out string error)
+        {
+            var id = uzivatel.Id;
+            return UzivateleGW.Instance.InsertOrUpdate(
+                ref id,
+                uzivatel.Jmeno,
+                uzivatel.Prijmeni,
+                uzivatel.DatumNarozeni,
+                uzivatel.ClenemOd,
+                (ushort) uzivatel.Spolehlivost,
+                out error);
+        }
+
+        public bool FindUzivatel(long uID, out Uzivatel uzivatel,  out string error)
+        {
+            error = String.Empty;
+            string jmeno = string.Empty;
+            string prijmeni = string.Empty;
+            DateTime datumNarozeni = DateTime.MinValue; 
+            DateTime clenemOd = DateTime.MinValue;
+            ushort spolehlivost = 0;
+            uzivatel = null;
+
+            if (UzivateleGW.Instance.Find(
+                uID,
+                out jmeno,
+                out prijmeni,
+                out datumNarozeni,
+                out clenemOd,
+                out spolehlivost,
+                out error))
+            {
+                uzivatel = new Uzivatel ()
+                    {
+                        Id = uID,
+                        Jmeno = jmeno,
+                        Prijmeni = prijmeni,
+                        DatumNarozeni = datumNarozeni,
+                        ClenemOd = clenemOd,
+                        Spolehlivost = (EnHodnoceni)spolehlivost
+                    };
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion

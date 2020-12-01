@@ -25,6 +25,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{5C783EAF-B
 		..\Data\Knihovna_log.ldf = ..\Data\Knihovna_log.ldf
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{27C035CF-7F86-4D30-9F1F-169608909BA5}"
+	ProjectSection(SolutionItems) = preProject
+		..\Data\database.sql = ..\Data\database.sql
+		..\Data\Zamestnanci.xml = ..\Data\Zamestnanci.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

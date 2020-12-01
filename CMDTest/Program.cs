@@ -10,6 +10,7 @@
 #endregion
 
 using System;
+using System.Linq;
 using BusinessLayer.BO;
 using BusinessLayer.Controllers;
 using BusinessLayer.Enums;
@@ -20,8 +21,11 @@ namespace CMDTest
     {
         private static void Main(string[] args)
         {
+
+            //Ukazka prace s TableDataGateway pro Zamestnance - ulozeni do XML souboru
             int x = SpravaZamestnancu.Instance.CelkovyPocetZamestnancu;
-            Console.WriteLine(x);
+            Console.WriteLine($"Celkovy pocet zamestnanu v IS: {x}");
+            //Pokud jich je méně než 5 tak vytvoříme 2 a uložíme
             if (x < 5)
             {
                 SpravaZamestnancu.Instance.AddZamestnanec(new Zamestnanec()
@@ -41,7 +45,70 @@ namespace CMDTest
                 });
                 SpravaZamestnancu.Instance.SaveAll();
             }
-            Console.WriteLine(SpravaZamestnancu.Instance.CelkovyPocetZamestnancu);
+            Console.WriteLine($"Novy pocet zamestnancu v IS {SpravaZamestnancu.Instance.CelkovyPocetZamestnancu}");
+
+            //Ukazka prace s TableDataGateway pro Uzivatele IS, prace s SQL serverem
+            int u = SpravaUzivatelu.Instance.CelkovyPocetUzivatelu;
+            Console.WriteLine($"Celkovy pocet Uzivatelu v IS {u}");
+            //Pokud je méně uživatelů než 5 tak dva nové vytvoříme a uložíme
+            if (u < 5)
+            {
+                SpravaUzivatelu.Instance.AddUzivatel(new Uzivatel()
+                {
+                    Jmeno = "Arne",
+                    Prijmeni = "Farin",
+                    DatumNarozeni = new DateTime(2000,1,10),
+                    ClenemOd = new DateTime(2015,6,7),
+                    Spolehlivost = EnHodnoceni.eSpolehlivy
+                });
+
+                SpravaUzivatelu.Instance.AddUzivatel(new Uzivatel()
+                {
+                    Jmeno = "Jules",
+                    Prijmeni = "Verne",
+                    DatumNarozeni = new DateTime(1900, 7, 1),
+                    ClenemOd = new DateTime(1920, 3, 19),
+                    Spolehlivost = EnHodnoceni.eSpolehlivy
+                });
+
+                SpravaUzivatelu.Instance.AddUzivatel(new Uzivatel()
+                {
+                    Jmeno = "Pepe",
+                    Prijmeni = "Novotny",
+                    DatumNarozeni = new DateTime(1945, 5, 13),
+                    ClenemOd = new DateTime(1955, 11, 9),
+                    Spolehlivost = EnHodnoceni.eNespolehlivy
+                });
+            }
+            Console.WriteLine($"Celkovy pocet Uzivatelu v IS {SpravaUzivatelu.Instance.CelkovyPocetUzivatelu}");
+
+            //Update prvni ho uzivatele v seznamu
+            var uFirst = SpravaUzivatelu.Instance.Uzivatele.First();
+            Console.WriteLine($"Prvni uzivatel ({uFirst.Id})  {uFirst.Jmeno} {uFirst.Prijmeni}");
+            //Zmena uzivatele
+            uFirst.Jmeno = "Pepa";
+            uFirst.Prijmeni = "Mares";
+            string err = string.Empty;
+            Uzivatel uziv = null;
+            if (SpravaUzivatelu.Instance.UpdateUzivatel(uFirst, out err))
+            {
+                if (SpravaUzivatelu.Instance.FindUzivatel(uFirst.Id, out uziv, out err))
+                {
+                    Console.WriteLine($"Prvni uzivatel ({uziv.Id}) upraveno v DB {uziv.Jmeno} {uziv.Prijmeni}");
+                }
+                else
+                {
+                    Console.WriteLine($"Nastala chyba při hledani uživatele {uFirst.Id} v DB\n {err}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Nastala chyba při aktualizaci uživatele v DB\n {err}");
+            }
+
+
         }
+
+
     }//class
 }//namespace

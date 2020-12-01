@@ -147,7 +147,7 @@ namespace DataLayer.TableDataGateways
                         prijmeni = dtUzivatele.Rows[i]["Prijmeni"].ToString();
                         datumNarozeni = (DateTime) dtUzivatele.Rows[i]["DatumNarozeni"];
                         clenemOd = (DateTime) dtUzivatele.Rows[i]["ClenemOd"];
-                        spolehlivost = (UInt16) dtUzivatele.Rows[i]["Spolehlivost"];
+                        spolehlivost = (ushort) dtUzivatele.Rows[i]["Spolehlivost"];
 
                         var sql = id < 0 ? sqlInsert : sqlUpdate;
                         SqlCommand sqlCmd = DataConnection.Instance.CreateCommand(sql);
@@ -211,14 +211,14 @@ namespace DataLayer.TableDataGateways
             string prijmeni,
             DateTime datumNarozeni,
             DateTime clenemOd,
-            UInt16 spolehlivost,
+            ushort spolehlivost,
             out string errMsg)
         {
             errMsg = string.Empty;
 
             string sqlInsert =
-                "INSERT INTO Uzivatele (Jmeno,Prijmeni,DatumNarozeni,ClenemOd,Spolehlivost) " +
-                "VALUES (@jm,@prij,@datN,@clenO,@spol); SELECT SCOPE_IDENTITY();";
+                "SET NOCOUNT ON; INSERT INTO Uzivatele (Jmeno,Prijmeni,DatumNarozeni,ClenemOd,Spolehlivost) " +
+                "VALUES (@jm,@prij,@datN,@clenO,@spol); SELECT SCOPE_IDENTITY(); SET NOCOUNT OFF;";
             string sqlUpdate =
                 "UPDATE Uzivatele SET Jmeno = @jm, Prijmeni = @prij, DatumNarozeni = @datN, " +
                 "ClenemOd = @clenO, Spolehlivost = @spol WHERE (Id=@id)";
@@ -239,10 +239,20 @@ namespace DataLayer.TableDataGateways
                         sqlCmd.Parameters.AddWithValue("@prij", prijmeni);
                         sqlCmd.Parameters.AddWithValue("@datN", datumNarozeni);
                         sqlCmd.Parameters.AddWithValue("@clenO", clenemOd);
-                        sqlCmd.Parameters.AddWithValue("@spol", spolehlivost);
+                        sqlCmd.Parameters.AddWithValue("@spol", (int)spolehlivost);
                         try
                         {
-                            var result = DataConnection.Instance.ExecuteNonQuery(sqlCmd);
+
+                            var result = -1;
+                            if (id == -1)
+                            {
+                                result = DataConnection.Instance.ExecuteScalar(sqlCmd);
+                            }
+                            else
+                            {
+                                result = DataConnection.Instance.ExecuteNonQuery(sqlCmd);
+                            }
+
                             //Pokud je návratová hodnota záporná nepovedlo se vložit/upravit
                             if (result < 0)
                                 throw new DataException($"Nepovedlo se vložit/upravit Uživatele ID:({id})");
@@ -383,7 +393,7 @@ namespace DataLayer.TableDataGateways
                                     prijmeni = result.GetString(1);
                                     datumNarozeni = result.GetDateTime(2);
                                     clenemOd = result.GetDateTime(3);
-                                    spolehlivost = (ushort) result.GetInt16(4);
+                                    spolehlivost = (ushort) result.GetInt32(4);
                                 }
                             }
                         }

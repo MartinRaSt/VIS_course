@@ -8,7 +8,7 @@ namespace BusinessLayer.Enums
     /// <summary>
     /// Spolehlivost u6ivatele
     /// </summary>
-    public enum EnHodnoceni:uint
+    public enum EnHodnoceni:ushort
     {
         eSpolehlivy = 1,
         eNespolehlivy = 0

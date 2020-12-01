@@ -120,6 +120,23 @@ namespace DataLayer
         }
 
         /// <summary>
+        /// Call SQL and return single value
+        /// </summary>
+        public int ExecuteScalar(SqlCommand command)
+        {
+            int answer = -1;
+            try
+            {
+                answer = Convert.ToInt32(command.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return answer;
+        }
+
+        /// <summary>
         /// Create command
         /// </summary>
         public SqlCommand CreateCommand(string strCommand)
