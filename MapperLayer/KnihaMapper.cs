@@ -9,9 +9,11 @@
 
 #endregion
 
+using MapperLayer;
+
 namespace Mappers
 {
-    public class KnihaMapper
+    public class KnihaMapper:BaseMapper 
     {
         #region Veřejné proměnné
 
