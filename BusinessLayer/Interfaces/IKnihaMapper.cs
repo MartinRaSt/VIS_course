@@ -9,11 +9,21 @@
 
 #endregion
 
+using System.Collections.Generic;
+using BusinessLayer.BO;
+
 namespace BusinessLayer.Interfaces
 {
-    public class IntfKnihaMapper
+    public interface IKnihaMapper
     {
+        #region Veřejné metody
+        bool LoadAll(out List<Entita> seznam, out string errMsg);
+        bool SaveAll(List<Entita> seznam, out string errMsg);
 
-    }//class
+        bool InsertOrUpdate(Kniha kniha, out string errMsg);
+        bool Delete(long id, out string errMsg);
+        bool Find(long id, out Kniha kniha, out string errMsg);
+        #endregion
+    }//interface
 
 }//namespace

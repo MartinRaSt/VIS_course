@@ -67,7 +67,7 @@ namespace DataLayer.TableDataGateways
 
             var sql = "SELECT Id, Jmeno, Prijmeni, DatumNarozeni, ClenemOd, Spolehlivost FROM Uzivatele";
 
-            //Vlozeni nebo aktualizace uzivatele v ulozisti
+            //Nacten uzivatele z ulozisti
             try
             {
                 DataConnection.Instance.Connect();
@@ -120,7 +120,7 @@ namespace DataLayer.TableDataGateways
 
             string sqlInsert =
                 "INSERT INTO Uzivatele (Jmeno,Prijmeni,DatumNarozeni,ClenemOd,Spolehlivost) " +
-                "VALUES (@jm,@prij,@datN,@clenO,@spol); SELECT SCOPE_IDENTITY();";
+                "VALUES (@jm,@prij,@datN,@clenO,@spol)";
             string sqlUpdate =
                 "UPDATE Uzivatele SET Jmeno = @jm, Prijmeni = @prij, DatumNarozeni = @datN, " +
                 "ClenemOd = @clenO, Spolehlivost = @spol WHERE (Id=@id)";
@@ -298,7 +298,7 @@ namespace DataLayer.TableDataGateways
 
             var sql = "DELETE FROM Uzivatele WHERE (Id = @id)";
 
-            //Vlozeni nebo aktualizace uzivatele v ulozisti
+            //Smazani uzivatele z uloziste
             try
             {
                 DataConnection.Instance.Connect();
