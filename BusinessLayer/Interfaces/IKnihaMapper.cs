@@ -17,8 +17,8 @@ namespace BusinessLayer.Interfaces
     public interface IKnihaMapper
     {
         #region Veřejné metody
-        bool LoadAll(out List<Entita> seznam, out string errMsg);
-        bool SaveAll(List<Entita> seznam, out string errMsg);
+        bool LoadAll(out List<Kniha> seznam, out string errMsg);
+        bool SaveAll(List<Kniha> seznam, out string errMsg);
 
         bool InsertOrUpdate(Kniha kniha, out string errMsg);
         bool Delete(long id, out string errMsg);

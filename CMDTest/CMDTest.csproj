@@ -54,6 +54,10 @@
       <Project>{5be8b8a8-31e3-4dd2-b9fe-ec2d1620209a}</Project>
       <Name>BusinessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MapperLayer\Mappers.csproj">
+      <Project>{BAA68964-EFF7-4720-AF6F-C7BE9B7F9E2F}</Project>
+      <Name>Mappers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

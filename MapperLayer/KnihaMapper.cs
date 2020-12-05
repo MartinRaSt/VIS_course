@@ -14,12 +14,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using BusinessLayer.BO;
+using BusinessLayer.Interfaces;
 using DataLayer;
 using MapperLayer;
 
 namespace Mappers
 {
-    public class KnihaMapper:BaseMapper 
+    public class KnihaMapper:BaseMapper,IKnihaMapper 
     {
         #region Veřejné proměnné
 
@@ -59,9 +60,9 @@ namespace Mappers
         /// <param name="seznam">Vraci seznam BO objektu</param>
         /// <param name="errMsg">Chybové hlášení, pokud nastala chyba</param>
         /// <returns>True - načtení proběhlo bez chyby, False - chyba při načítání</returns>
-        public override bool LoadAll(out List<Entita> seznam , out string errMsg)
+        public bool LoadAll(out List<Kniha> seznam , out string errMsg)
         {
-            seznam = new List<Entita>();
+            seznam = new List<Kniha>();
             errMsg = string.Empty;
 
             var sql = "SELECT Id,AutorJmeno,AutorPrijmeni,NazevKnihy,Vydavatel,RokVydani,Vydani,Jazyk FROM Knihy";
@@ -128,7 +129,7 @@ namespace Mappers
         /// <param name="seznam">Seznam BO Kniha, které chcecem uložit/aktualizovat v DB</param>
         /// <param name="errMsg">Chybové hlášení pokud nastala chyba</param>
         /// <returns>True - operace se provedla, False - nastala chyba</returns>
-        public override bool SaveAll(List<Entita> seznam, out string errMsg)
+        public bool SaveAll(List<Kniha> seznam, out string errMsg)
         {
             errMsg = string.Empty;
 
@@ -137,7 +138,7 @@ namespace Mappers
                 "VALUES (@ajm,@aprij,@nazev,@vydavatel,@rokvyd,@vydani,@jazyk)";
             string sqlUpdate =
                 "UPDATE Knihy SET AutorJmeno = @ajm, AutorPrijmeni = @aprij, NazevKnihy = @nazev, " +
-                "Vydavatel = @vydavatel, RokVydani = @rokvyd, Jazyk = @jazyk WHERE (Id=@id)";
+                "Vydavatel = @vydavatel, RokVydani = @rokvyd, Vydani = @vydani, Jazyk = @jazyk WHERE (Id=@id)";
 
             long id = -1;
             
@@ -159,6 +160,7 @@ namespace Mappers
                             sqlCmd.Parameters.AddWithValue("@aprij", ((Kniha)(seznam[i])).AutorPrijmeni);
                             sqlCmd.Parameters.AddWithValue("@nazev", ((Kniha)(seznam[i])).NazevKnihy);
                             sqlCmd.Parameters.AddWithValue("@vydavatel", ((Kniha)(seznam[i])).Vydavatel);
+                            sqlCmd.Parameters.AddWithValue("@rokvyd", ((Kniha)(seznam[i])).RokVydani);
                             sqlCmd.Parameters.AddWithValue("@vydani", ((Kniha)(seznam[i])).Vydani);
                             sqlCmd.Parameters.AddWithValue("@jazyk", ((Kniha)(seznam[i])).Jazyk);
                             try
@@ -212,7 +214,7 @@ namespace Mappers
                 "VALUES (@ajm,@aprij,@nazev,@vydavatel,@rokvyd,@vydani,@jazyk); SELECT SCOPE_IDENTITY(); SET NOCOUNT OFF;";
             string sqlUpdate =
                 "UPDATE Knihy SET AutorJmeno = @ajm, AutorPrijmeni = @aprij, NazevKnihy = @nazev, " +
-                "Vydavatel = @vydavatel, RokVydani = @rokvyd, Jazyk = @jazyk WHERE (Id=@id)";
+                "Vydavatel = @vydavatel, RokVydani = @rokvyd, Vydani = @vydani, Jazyk = @jazyk WHERE (Id=@id)";
 
             var sql = kniha.Id < 0 ? sqlInsert : sqlUpdate;
 
@@ -232,6 +234,7 @@ namespace Mappers
                         sqlCmd.Parameters.AddWithValue("@nazev", kniha.NazevKnihy);
                         sqlCmd.Parameters.AddWithValue("@vydavatel", kniha.Vydavatel);
                         sqlCmd.Parameters.AddWithValue("@vydani", kniha.Vydani);
+                        sqlCmd.Parameters.AddWithValue("@rokvyd", kniha.RokVydani);
                         sqlCmd.Parameters.AddWithValue("@jazyk", kniha.Jazyk);
                         try
                         {

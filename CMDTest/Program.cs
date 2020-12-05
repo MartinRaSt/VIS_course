@@ -14,6 +14,8 @@ using System.Linq;
 using BusinessLayer.BO;
 using BusinessLayer.Controllers;
 using BusinessLayer.Enums;
+using BusinessLayer.Interfaces;
+using Mappers;
 
 namespace CMDTest
 {
@@ -106,6 +108,46 @@ namespace CMDTest
                 Console.WriteLine($"Nastala chyba při aktualizaci uživatele v DB\n {err}");
             }
 
+            //Ukazka použití DataMapperuKniha
+            //Vložení dependency - nastavujeme do spravce knih referenci na mapper pomoci interface
+            SpravaKnih.KnihaDataMapper = KnihaMapper.Instance;
+
+            //Počet knih v IS, v ramci konstruktoru se zavola nacteni vsech knih z uložistě
+            int k = SpravaKnih.Instance.CelkovyPocetKnih;
+
+            Console.WriteLine($"Celkovy pocet Knih v IS {k}");
+            //Pokud je méně uživatelů než 5 tak dva nové vytvoříme a uložíme
+            if (k < 5)
+            {
+                SpravaKnih.Instance.AddKniha(new Kniha()
+                {
+                    AutorJmeno = "Olgoj",
+                    AutorPrijmeni = "Chorchoj",
+                    NazevKnihy = "Dune",
+                    Vydavatel = "Computer Press",
+                    RokVydani = 2020,
+                    Vydani = 1,
+                    Jazyk = "CZ"
+                });
+
+                SpravaKnih.Instance.AddKniha(new Kniha()
+                {
+                    AutorJmeno = "Jan",
+                    AutorPrijmeni = "Novak",
+                    NazevKnihy = "Rozhledna",
+                    Vydavatel = "Mlada Fronta",
+                    RokVydani = 1976,
+                    Vydani = 5,
+                    Jazyk = "CZ"
+                });
+            }
+            Console.WriteLine($"Celkovy pocet Knih v IS {SpravaKnih.Instance.CelkovyPocetKnih}");
+            //Pokud je méně uživatelů než 5 tak dva nové vytvoříme a uložíme
+
+            //Upravime v knihach
+            Kniha kn = SpravaKnih.Instance.VyhledejKnihu(3);
+            kn.AutorPrijmeni = "Upraveny Autor";
+            SpravaKnih.Instance.UpdateKniha(kn);
 
         }
 

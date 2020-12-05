@@ -47,6 +47,7 @@
     <Compile Include="BO\Kniha.cs" />
     <Compile Include="BO\Vypujcka.cs" />
     <Compile Include="BO\Zamestnanec.cs" />
+    <Compile Include="Controllers\SpravaKnih.cs" />
     <Compile Include="Controllers\SpravaUzivatelu.cs" />
     <Compile Include="Controllers\SpravaZamestnancu.cs" />
     <Compile Include="Enums\EnHodnoceni.cs" />

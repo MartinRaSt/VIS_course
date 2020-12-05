@@ -20,8 +20,7 @@ namespace MapperLayer
     public abstract class BaseMapper
     {
         #region Veřejné metody
-        public abstract bool LoadAll(out List<Entita> seznam, out string errMsg);
-        public abstract bool SaveAll(List<Entita> seznam, out string errMsg);
+        //Zde by byly případné společné metody pro všechny Mappery
         #endregion
     }//class
 
