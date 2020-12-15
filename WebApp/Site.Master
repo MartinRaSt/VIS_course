@@ -46,13 +46,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                    <a class="navbar-brand" runat="server" href="~/">Knihovna IS</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="~/Login">Přihlášení</a></li>
+                        <li><a runat="server" id="miKnihy" href="~/Knihy">Knihy</a></li>
+                        <li><a runat="server" id="miUzivatele" href="~/Uzivatele">Uživatelé</a></li>
+                        <li><a runat="server" id="miZamestnanci" href="~/Zamestnanci">Zaměstnanci</a></li>
                     </ul>
                 </div>
             </div>
@@ -62,7 +64,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - VIS implementace IS pomocí technologie ASP.NET</p>
             </footer>
         </div>
 

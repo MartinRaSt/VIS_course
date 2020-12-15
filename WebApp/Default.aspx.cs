@@ -11,7 +11,14 @@ namespace WebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (! (bool) Session["LoggedToIS"])
+            {
+                laLoggedUser.Text = "žádný uživatel";
+            }
+            else
+            {
+                laLoggedUser.Text = (string) Session["LoggedUserName"];
+            }
         }
     }
 }
